@@ -53,9 +53,11 @@ You can set up the service with the following command :
 kubectl apply -f service.yaml
 ```
 
-Whether you use it with the replicaset or the deployment, make sure that they have "app.kubernetes.io/name: api" in their template's labels.  
+Whether you use it with the replicaset or the deployment applied, make sure that they have "app.kubernetes.io/name: api" in their template's labels.  
 
 ### INGRESS
+
+You need the deployment and the service to be applied too.
 
 You can set up ingress with the following commands :
 
