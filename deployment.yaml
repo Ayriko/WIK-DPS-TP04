@@ -1,0 +1,29 @@
+###############
+#DEPLOYMENT
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tp
+  name: api-deployment
+  labels:
+    app: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: api
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: registry.cluster.wik.cloud/public/echo 
+        ports:
+        - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%

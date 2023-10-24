@@ -1,0 +1,27 @@
+###############
+#REPLICA
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  namespace: tp
+  name: api
+  labels:
+    app: api
+spec:
+  # modify replicas according to your case
+  replicas: 4
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+        app.kubernetes.io/name: api
+    spec:
+      containers:
+      - name: api
+        image: registry.cluster.wik.cloud/public/echo
+        ports:
+         - containerPort: 8080
